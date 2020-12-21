@@ -14,7 +14,7 @@ installMatplotlib = ['pip', 'install', 'matplotlib']
 def setup():
 	if systemType == 'Windows':
 		#writes in a config.json the path of the waveforms.exe installation
-		if str(input('Make sure your Python installation is added to PATH. Confirm? [Y/n]: ')).lower() != 'y': quit()
+		if str(input('Make sure your Python and GhostScript installations are added to PATH. Confirm? [Y/n]: ')).lower() != 'y': quit()
 		print('Please select WaveForms.exe installation file from your file system.')
 		Tk().withdraw()
 		while True:

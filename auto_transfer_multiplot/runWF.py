@@ -13,6 +13,13 @@ def linuxLaunch(workSpacePath):
 	subprocess.Popen(openWF)
 
 if __name__ == "__main__":
+	#check if config file exists, if it does runs the script, otherwhise asks the use to setup first
+	configPath = os.getcwd() + '\\config.json'
+	try:
+		open(configPath, 'r')
+	except:
+		print('Please run setup first!')
+		quit()
 	system = platform.system()
 	if system == 'Windows':
 		workSpacePath = os.getcwd() + '\\trasferimento_workspace_win.dwf3work'
