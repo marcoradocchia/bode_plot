@@ -1,5 +1,6 @@
 from math import sqrt
 import random
+import platform
 
 #************************FUNCTIONS************************
 def importData(inputFilePath):
@@ -44,7 +45,12 @@ def splitAt(array, entry): #function that accepts an array and a variable and sp
 	return outArray
 
 def getCircuitName(inputFilePath):
-	inputFilePath = inputFilePath.split('\\')
+	systemType = platform.system()
+
+	if systemType == 'Windows':
+		inputFilePath = inputFilePath.split('\\')
+	elif systemType == 'Linux':
+		inputFilePath = inputFilePath.split('/')
 	fileName = inputFilePath[len(inputFilePath) - 1]
 	fileName = fileName.split('.csv')[0]
 	fileName = fileName.split('_')
