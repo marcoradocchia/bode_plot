@@ -29,7 +29,7 @@ def setup():
 		subprocess.check_call(installMatplotlib)
 	elif systemType == 'Linux':
 		#asks if waveforms is installed and in case installs dependencies
-		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]')).lower()
+		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]: ')).lower()
 		if WFinstalled == 'y':
 			print('OK')
 			subprocess.check_call(pipInstall)
