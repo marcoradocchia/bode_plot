@@ -2,8 +2,6 @@ import os
 import json
 import platform
 import subprocess
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
 
 #LINUX INSTALL REQUIREMENTS COMMANDS
 pipInstall = ['sudo', 'apt', 'install', 'python-pip']
@@ -13,6 +11,10 @@ installMatplotlib = ['pip', 'install', 'matplotlib']
 #detect WF istallation path
 def setup():
 	if systemType == 'Windows':
+		#import tkinter only
+		from tkinter import Tk
+		from tkinter.filedialog import askopenfilename
+
 		#writes in a config.json the path of the waveforms.exe installation
 		if str(input('Make sure your Python and GhostScript installations are added to PATH. Confirm? [Y/n]: ')).lower() != 'y': quit()
 		print('Please select WaveForms.exe installation file from your file system.')
