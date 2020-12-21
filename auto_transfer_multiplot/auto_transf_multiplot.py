@@ -10,6 +10,7 @@ emptyLine = '\n'
 alphaGridMajor = 0.8
 alphaGridMinor = 0.4
 alphaErrorRange = 0.5
+line = '-'
 dashedLine = '--'
 
 #************************LINE COLORS************************
@@ -33,7 +34,7 @@ def setUpAx(ax1, ax2, ax3, circuitName):
 	ax1.set_xscale('log')
 	ax1.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(0.1))
 	ax1.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(0.2))
-	ax1.grid(True, alpha=alphaGridMajor, linestyle=dashedLine, which='major')
+	ax1.grid(True, alpha=alphaGridMajor, linestyle=line, which='major')
 	ax1.grid(True, alpha=alphaGridMinor, linestyle=dashedLine, which='minor')
 	if latexUse == True:
 		ax1.set_title(r'\textbf{' + '{}'.format(circuitName) + '}')
@@ -43,13 +44,13 @@ def setUpAx(ax1, ax2, ax3, circuitName):
 	ax2.set_xscale('log')
 	ax2.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(5))
 	ax2.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(10))
-	ax2.grid(True, alpha=alphaGridMajor, linestyle=dashedLine, which='both')
+	ax2.grid(True, alpha=alphaGridMajor, linestyle=line, which='major')
 	ax2.grid(True, alpha=alphaGridMinor, linestyle=dashedLine, which='minor')
 	#ax3
 	ax3.set_xscale('log')
 	ax3.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(15))
 	ax3.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(30))
-	ax3.grid(True, alpha=alphaGridMajor, linestyle=dashedLine, which='both')
+	ax3.grid(True, alpha=alphaGridMajor, linestyle=line, which='major')
 	ax3.grid(True, alpha=alphaGridMinor, linestyle=dashedLine, which='minor')
 
 #************************PRINT PLOTS************************
