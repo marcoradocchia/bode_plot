@@ -1,4 +1,4 @@
-# AUTOMATIC TRANSFER FUNCTION ACQUISITION
+# Automatic Transfert Function acquisition and plotting
 Scripts for automatic transfer function acquisition on Diligent Studio
 
 ## Requirements:
