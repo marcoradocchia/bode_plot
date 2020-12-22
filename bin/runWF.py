@@ -31,7 +31,7 @@ if __name__ == "__main__":
 		windowsLaunch(WFPath, workSpacePath)
 	elif system == 'Linux':
 		checkJsonFile(configPath=os.getcwd() + '/config.json')
-		workSpacePath = os.getcwd() + '/bin/trasferimento_workspace_linux.dwf3work'
+		workSpacePath = os.getcwd() + '/trasferimento_workspace_linux.dwf3work'
 		linuxLaunch(workSpacePath)
 	else:
 		print('Script autorun not supported on this OS.')
