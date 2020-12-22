@@ -4,9 +4,23 @@ import platform
 import subprocess
 
 #LINUX INSTALL REQUIREMENTS COMMANDS
-pipInstall = ['sudo', 'apt', 'install', 'python-pip']
+pipInstall = ['sudo', 'apt', 'install', 'python3-pip']
 tkInstall = ['sudo', 'apt', 'install', 'python3-tk']
-installMatplotlib = ['pip', 'install', 'matplotlib']
+installMatplotlibWin = ['pip', 'install', 'matplotlib==3.3.3']
+installMatplotlibLinux = ['pip3', 'install', 'matplotlib==3.3.3']
+
+#dump json
+def dumpJsonWin(WFexe):
+	configPath = os.getcwd() + '\\bin\\config.json'
+	jsonScheme = [{"installationPath": WFexe}]
+	with open(configPath, 'w') as configFile:
+		json.dump(jsonScheme, configFile)
+
+def dumpJsonLinux():
+	configPath = os.getcwd() + '\\biny\\config.json'
+	jsonScheme = [{"setupComplete": "ok"}]
+	with open(configPath, 'w') as configFile:
+		json.dump(jsonScheme, configFile)
 
 #detect WF istallation path
 def setup():
@@ -23,27 +37,21 @@ def setup():
 			WFexe = askopenfilename()
 			if WFexe == '': quit()
 			elif WFexe.endswith('WaveForms.exe'):
-				dumpJson(WFexe) #returns only if the file is the correct one
+				dumpJsonWin(WFexe) #returns only if the file is the correct one
 				break
 		#installes dependencies
-		subprocess.check_call(installMatplotlib)
+		subprocess.check_call(installMatplotlibWin)
 	elif systemType == 'Linux':
 		#asks if waveforms is installed and in case installs dependencies
 		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]: ')).lower()
 		if WFinstalled == 'y':
 			print('OK')
+			dumpJsonLinux()
 			subprocess.check_call(pipInstall)
 			subprocess.check_call(tkInstall)
-			subprocess.check_call(installMatplotlib)
+			subprocess.check_call(installMatplotlibLinux)
 		else:
 			input('Please install Diligent Adept Runtime and Diligent WaveForms first!\nPress Enter key to continue.\n')
-
-#dump json
-def dumpJson(WFexe):
-	configPath = os.getcwd() + '\\config.json'
-	jsonScheme = [{"installationPath": WFexe}]
-	with open(configPath, 'w') as configFile:
-		json.dump(jsonScheme, configFile)
 
 if __name__ == "__main__":
 	systemType = platform.system()
