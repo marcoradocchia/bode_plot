@@ -3,7 +3,7 @@ Scripts for automatic transfer function acquisition on _Digikent Studio_
 
 ## Requirements:
 * __Digilent WaveForms__
-* __Digilent Adept Runtime__ (only Linux)
+* __Digilent Adept for Linux Runtime__ (Linux only)
 * __Python 3__: in case you're using these scripts on windows you need to add it to Path in Environment Variables section; should be already installed on Linux
 * __TEX distribution__ (tested using TeX Live)
 * __GhostScript__: required by 'matplotlib' in order to work with LaTeX (should be already installed on Linux)
