@@ -3,7 +3,7 @@
 
 REQUIREMENTS:
 	-"Python 3" working installation (not working on Python 2)
-		-in case you're using these scripts on windows you need to add it to Path in Environment Variables section; should be already installed on linux
+		-in case you're using these scripts on windows you need to add it to Path in Environment Variables section; should be already installed on linux\n
 	-"TEX" distribution installed
 		-tested using TeX Live
 	-"GhostScript" working installation
