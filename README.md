@@ -10,6 +10,7 @@ Scripts for automatic transfer function acquisition on _Digikent Studio_
 
 
 ## Important:
+* In order to make the scripts work you need to donwload the files as _.zip_ and extract the zip in the _Documents_ folder of your system (please do not rename the folder, extract the files maintaining the default name)
 * These scripts support Windows and Debian based Linux distributions
 * Careful! The scripts are not working on _Python 2_
 * Please don't apply any changes to the _*.dwf3work_ files! They contain a script that runs the data acquisition
