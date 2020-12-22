@@ -4,7 +4,6 @@ Scripts for automatic transfer function acquisition on Diligent Studio
 REQUIREMENTS:
 
 	-"Diligent WaveForms"
-
 	-"Diligent Adept Runtime" (only Linux)
 
 	-"Python 3" (scripts not working on Python 2): in case you're using these scripts on windows you need to add it to Path in Environment Variables section; should be already installed on Linux
