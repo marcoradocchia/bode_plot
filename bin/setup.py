@@ -17,7 +17,7 @@ def dumpJsonWin(WFexe):
 		json.dump(jsonScheme, configFile)
 
 def dumpJsonLinux():
-	configPath = os.getcwd() + '\\biny\\config.json'
+	configPath = os.getcwd() + '\\bin\\config.json'
 	jsonScheme = [{"setupComplete": "ok"}]
 	with open(configPath, 'w') as configFile:
 		json.dump(jsonScheme, configFile)
