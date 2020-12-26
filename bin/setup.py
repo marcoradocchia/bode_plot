@@ -17,7 +17,7 @@ def dumpJsonWin(WFexe):
 		json.dump(jsonScheme, configFile)
 
 def dumpJsonLinux():
-	configPath = os.getcwd() + '/config.json'
+	configPath = os.getcwd() + '/bin/config.json'
 	jsonScheme = [{"setupComplete": "ok"}]
 	with open(configPath, 'w') as configFile:
 		json.dump(jsonScheme, configFile)
@@ -33,23 +33,23 @@ def setup():
 		if str(input('Make sure your Python and GhostScript installations are added to PATH. Confirm? [Y/n]: ')).lower() != 'y': quit()
 		print('Please select WaveForms.exe installation file from your file system.')
 		Tk().withdraw()
+		#installes dependencies
+		subprocess.check_call(installMatplotlibWin)
 		while True:
 			WFexe = askopenfilename()
 			if WFexe == '': quit()
 			elif WFexe.endswith('WaveForms.exe'):
 				dumpJsonWin(WFexe) #returns only if the file is the correct one
 				break
-		#installes dependencies
-		subprocess.check_call(installMatplotlibWin)
 	elif systemType == 'Linux':
 		#asks if waveforms is installed and in case installs dependencies
 		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]: ')).lower()
 		if WFinstalled == 'y':
 			print('OK')
-			dumpJsonLinux()
 			subprocess.check_call(pipInstall)
 			subprocess.check_call(tkInstall)
 			subprocess.check_call(installMatplotlibLinux)
+			dumpJsonLinux()
 		else:
 			input('Please install Diligent Adept Runtime and Diligent WaveForms first!\nPress Enter key to continue.\n')
 
