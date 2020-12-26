@@ -55,6 +55,6 @@ def setup():
 
 if __name__ == "__main__":
 	systemType = platform.system()
-	print('In order to make these scripts work you need a working Python, LaTeX and GhostScript installation. Please make sure you match these requirements.')
+	print('In order to make these scripts work you need a working Python, LaTeX and GhostScript installation.\nBefore you continue, please make sure you match these requirements.')
 	if str(input('Do you want to continue with the setup? [Y/n]: ')).lower() != 'y': quit()
 	setup()

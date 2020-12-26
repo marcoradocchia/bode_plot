@@ -1,0 +1,1 @@
+python .\bin\setup.py

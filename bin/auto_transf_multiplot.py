@@ -36,7 +36,7 @@ def getMultipleLocator(valuesArray):
 		maxVal = max(subArray)
 		minVal = min(subArray)
 		multipleLocator.append((maxVal - minVal) / ticksDivisions)
-	multipleLocator = max(multipleLocator)
+	multipleLocator = round(max(multipleLocator), 2)
 	return multipleLocator
 
 
