@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import rc
 import math as m
-from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor
+from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor, formatTicks
 
 #************************GLOBAL PARAMETERS************************
 emptyLine = '\n'
@@ -29,24 +29,25 @@ colorPalette = [
 ]
 
 #************************SETUP PLOTS************************
-def getMultipleLocator(valuesArray):
+def getTicks(valuesArray):
 	multipleLocator = []
 	for subArray in valuesArray:
 		maxVal = max(subArray)
 		minVal = min(subArray)
-		multipleLocator.append((maxVal - minVal) / ticksDivisions)
-	multipleLocator = round(max(multipleLocator), 2)
-	return multipleLocator
-
+		multipleLocator.append(abs(maxVal - minVal) / ticksDivisions)
+	multipleLocator = max(multipleLocator)
+	tickFormat = formatTicks(multipleLocator)
+	return multipleLocator, tickFormat
 
 def setUpAx(ax1, ax2, ax3, circuitName, gain, gaindB, phase):
-	ax1MultipleLocator = getMultipleLocator(gain)
-	ax2MultipleLocator = getMultipleLocator(gaindB)
-	ax3MultipleLocator = getMultipleLocator(phase)
+	ax1MultipleLocator, ax1TickFormat = getTicks(gain)
+	ax2MultipleLocator, ax2TickFormat = getTicks(gaindB)
+	ax3MultipleLocator, ax3TickFormat = getTicks(phase)
 	#ax1
 	ax1.set_xscale('log')
 	ax1.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(ax1MultipleLocator))
 	ax1.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(ax1MultipleLocator * 2))
+	ax1.yaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%.{}f'.format(ax1TickFormat)))
 	ax1.grid(True, alpha=alphaGridMajor, linestyle=dashedLine, which='major')
 	ax1.grid(True, alpha=alphaGridMinor, linestyle=dashedLine, which='minor')
 	if latexUse == True:
@@ -57,12 +58,14 @@ def setUpAx(ax1, ax2, ax3, circuitName, gain, gaindB, phase):
 	ax2.set_xscale('log')
 	ax2.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(ax2MultipleLocator))
 	ax2.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(ax2MultipleLocator * 2))
+	ax2.yaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%.{}f'.format(ax2TickFormat)))
 	ax2.grid(True, alpha=alphaGridMajor, linestyle=dashedLine, which='major')
 	ax2.grid(True, alpha=alphaGridMinor, linestyle=dashedLine, which='minor')
 	#ax3
 	ax3.set_xscale('log')
 	ax3.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(ax3MultipleLocator))
 	ax3.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(ax3MultipleLocator * 2))
+	ax3.yaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%.{}f'.format(ax3TickFormat)))
 	ax3.grid(True, alpha=alphaGridMajor, linestyle=dashedLine, which='major')
 	ax3.grid(True, alpha=alphaGridMinor, linestyle=dashedLine, which='minor')
 

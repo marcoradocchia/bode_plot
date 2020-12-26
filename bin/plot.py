@@ -25,7 +25,7 @@ if __name__ == "__main__":
 		csvFile = fixWindowsPath(csvFile)
 	elif systemType == 'Linux':
 		runPython = 'python3'
-		script = os.getcwd() + 'auto_transf_multiplot.py'
+		script = os.getcwd() + '/bin/auto_transf_multiplot.py'
 	plotCommand = [runPython, script, latexArg, csvFile]
 	subprocess.Popen(plotCommand)
 

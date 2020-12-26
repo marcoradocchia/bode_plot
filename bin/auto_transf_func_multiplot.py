@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt, log10
 import random
 import platform
 
@@ -44,6 +44,16 @@ def splitAt(array, entry): #function that accepts an array and a variable and sp
 		outArray[index].append(element)
 	return outArray
 
+def formatTicks(multipleLocator): 
+	digit = int(log10(multipleLocator))
+	if digit > 0:
+		formatTicksVal = 0
+	elif digit == 0:
+		formatTicksVal = 1
+	elif digit < 0:
+		formatTicksVal = abs(digit - 1)
+	return formatTicksVal
+
 def getCircuitName(inputFilePath):
 	systemType = platform.system()
 
@@ -61,7 +71,7 @@ def getCircuitName(inputFilePath):
 		name = name.upper()
 	else:
 		name = fileName[0].upper()
-	return(name)
+	return name
 
 def printCuoffResults(cutOffVals, deltaCutOffVals, case): #prints cutoff measure and bandwidth in terminal (where present)
 	if case == 'abs':
