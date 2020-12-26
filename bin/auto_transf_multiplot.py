@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import rc
 import math as m
-from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, randomColor
+from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor
 
 #************************GLOBAL PARAMETERS************************
 emptyLine = '\n'
@@ -19,14 +19,13 @@ ubuntuPurple = '#77216F'
 ubuntuOrange = '#E95420'
 ubuntuWarmGrey = '#AEA79F'
 colorPalette = [
-	'#E64B35B2',
-	'#00A087B2',
-	'#00A087B2',
-	'#8491B4B2',
-	'#3C5488B2',
-	ubuntuOrange,
-	ubuntuPurple,
-	ubuntuWarmGrey
+	'#088C6F',
+	'#2E282A',
+	'#4F323B',
+	'#3A9679',
+	'#263859',
+	'#FF6768',
+	ubuntuPurple
 ]
 
 #************************SETUP PLOTS************************
@@ -158,7 +157,7 @@ if __name__ == "__main__":
 	setUpAx(ax1, ax2, ax3, circuitName, gain, gaindB, phase) #set up axes parameters
 	fig.canvas.set_window_title(circuitName) #changes window title to circuitName
 	for index in range(len(freq)): #print every curve
-		thisPlotColor, colorPalette = randomColor(colorPalette) #picks this plot color
+		thisPlotColor, colorPalette = pickColor(colorPalette) #picks this plot color
 		printTransfPlot(freq[index], gain[index], ax1, thisPlotColor)
 		printTransfPlotdB(freq[index], gaindB[index], ax2, thisPlotColor)
 		printPhasePlot(freq[index], phase[index], ax3, thisPlotColor)

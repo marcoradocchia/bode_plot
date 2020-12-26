@@ -106,7 +106,7 @@ def getCutOff(freqPlot, transfPlot, case): #returns the cutoff frequency
 	else:
 		return None, None
 
-def randomColor(colorPalette):
+def pickColor(colorPalette):
 	color = random.choice(colorPalette)
 	colorPalette.remove(color)
 	return color, colorPalette
