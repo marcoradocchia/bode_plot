@@ -45,7 +45,7 @@ def splitAt(array, entry): #function that accepts an array and a variable and sp
 	return outArray
 
 def formatTicks(multipleLocator): 
-	digit = int(log10(multipleLocator))
+	digit = round(log10(multipleLocator))
 	if digit > 0:
 		formatTicksVal = 0
 	elif digit == 0:
