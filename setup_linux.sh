@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 ./setup.py
+python3 ./bin/setup.py
