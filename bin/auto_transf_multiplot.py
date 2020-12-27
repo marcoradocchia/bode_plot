@@ -34,7 +34,11 @@ def getTicks(valuesArray):
 	for subArray in valuesArray:
 		maxVal = max(subArray)
 		minVal = min(subArray)
-		multipleLocator.append(abs(maxVal - minVal) / ticksDivisions)
+		deltaVal = abs(maxVal - minVal)
+		if deltaVal == 0:
+			print('Invalid range, please retry.')
+			quit()
+		multipleLocator.append(deltaVal / ticksDivisions)
 	multipleLocator = max(multipleLocator)
 	tickFormat = formatTicks(multipleLocator)
 	return multipleLocator, tickFormat

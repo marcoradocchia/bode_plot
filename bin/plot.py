@@ -30,3 +30,5 @@ if __name__ == "__main__":
 	subprocess.Popen(plotCommand)
 
 #TODO: check working on linux
+#TODO: ask for multiple plotting and let user open more than one single file if he wants. if so make one file containing all the data and separate the different files data with a blank line
+#TODO: in workspace script, force the user to make at least 2 measures

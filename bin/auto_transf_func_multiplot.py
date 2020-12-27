@@ -3,6 +3,13 @@ import random
 import platform
 
 #************************FUNCTIONS************************
+def checkData(scopeData):
+	for val in scopeData: #i need to check if the input data file presents some infinity values that break matplolib
+		val = float(val)
+		if val == float('inf') or val == float('-inf'):
+			print('Input file contains some invalid values. Please check your input file!')
+			quit()
+
 def importData(inputFilePath):
 	try:
 		inputFile = open(inputFilePath, 'r')
@@ -25,6 +32,7 @@ def importData(inputFilePath):
 			phase.append(line)
 			continue
 		scopeData = line.split(',')
+		checkData(scopeData)
 		freq.append(float(scopeData[0]))
 		inVolt.append(float(scopeData[1]))
 		outVolt.append(float(scopeData[2]))
