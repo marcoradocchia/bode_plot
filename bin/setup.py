@@ -9,6 +9,9 @@ tkInstall = ['sudo', 'apt', 'install', 'python3-tk']
 installMatplotlibWin = ['pip', 'install', 'matplotlib==3.3.3']
 installMatplotlibLinux = ['pip3', 'install', 'matplotlib==3.3.3']
 
+#RASPBERRY INSTALL PYTHON3-GI-CAIRO
+giCairoInstall = ['sudo', 'apt', 'install', 'python3-gi-cairo']
+
 #dump json
 def dumpJsonWin(WFexe):
 	configPath = os.getcwd() + '\\bin\\config.json'
@@ -48,6 +51,8 @@ def setup():
 		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]: ')).lower()
 		if WFinstalled == 'y':
 			print('OK')
+			if platform.machine() == 'armv7l':
+				subprocess.check_call(giCairoInstall)
 			subprocess.check_call(pipInstall)
 			subprocess.check_call(tkInstall)
 			subprocess.check_call(installMatplotlibLinux)
