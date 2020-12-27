@@ -61,4 +61,3 @@ if __name__ == "__main__":
 	subprocess.Popen(plotCommand)
 
 #TODO: check working on linux
-#TODO: in workspace script, force the user to make at least 2 measures
