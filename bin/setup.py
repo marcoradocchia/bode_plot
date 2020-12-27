@@ -31,16 +31,18 @@ def setup():
 
 		#writes in a config.json the path of the waveforms.exe installation
 		if str(input('Make sure your Python and GhostScript installations are added to PATH. Confirm? [Y/n]: ')).lower() != 'y': quit()
-		print('Please select WaveForms.exe installation file from your file system.')
-		Tk().withdraw()
 		#installes dependencies
 		subprocess.check_call(installMatplotlibWin)
+		Tk().withdraw()
+		print('Please select WaveForms.exe installation file from your file system.')
 		while True:
-			WFexe = askopenfilename()
+			WFexe = askopenfilename(title='Select WaveForms EXE file', filetypes=[('EXE', '.exe')])
 			if WFexe == '': quit()
 			elif WFexe.endswith('WaveForms.exe'):
 				dumpJsonWin(WFexe) #returns only if the file is the correct one
 				break
+			else:
+				print('Please select the correct file.')
 	elif systemType == 'Linux':
 		#asks if waveforms is installed and in case installs dependencies
 		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]: ')).lower()
