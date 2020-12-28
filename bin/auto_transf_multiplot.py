@@ -98,7 +98,7 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out th
 				ax2.axvline(cutOffVals[index], color=ubuntuOrange, label=ax2CutoffLabel)
 				ax2.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
 	if latexUse == True:
-		ax2Label = r'Trasfer Function $(\si{\decibel})$'
+		ax2Label = r'Trasfer Function $(\si{\decibel})$' #EDIT THIS!
 		ax2yLabel = r'Gain $(\si{\decibel})$'
 	else:
 		ax2Label = r'Transfer Function (dB)'
