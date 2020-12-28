@@ -83,9 +83,8 @@ def printTransfPlot(freqPlot, transfPlot, ax1, thisPlotColor): #plots out the tr
 				ax1CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
 				ax1.axvline(cutOffVals[index], color=ubuntuOrange, label=ax1CutoffLabel)
 				ax1.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
-	ax1Label = r'Trasfer Function'
 	ax1yLabel = r'Gain'
-	ax1.plot(freqPlot, transfPlot, label=ax1Label, color=thisPlotColor)
+	ax1.plot(freqPlot, transfPlot, color=thisPlotColor)
 	ax1.set_ylabel(ax1yLabel)
 	ax1.legend(loc='best')
 
@@ -98,12 +97,10 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out th
 				ax2.axvline(cutOffVals[index], color=ubuntuOrange, label=ax2CutoffLabel)
 				ax2.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
 	if latexUse == True:
-		ax2Label = r'Trasfer Function $(\si{\decibel})$' #EDIT THIS!
 		ax2yLabel = r'Gain $(\si{\decibel})$'
 	else:
-		ax2Label = r'Transfer Function (dB)'
 		ax2yLabel = r'Gain (dB)'
-	ax2.plot(freqPlot, transfPlotdB, label=ax2Label, color=thisPlotColor)
+	ax2.plot(freqPlot, transfPlotdB, color=thisPlotColor)
 	ax2.set_ylabel(ax2yLabel)
 	ax2.legend(loc='best')
 
@@ -171,3 +168,5 @@ if __name__ == "__main__":
 		printPhasePlot(freq[index], phase[index], ax3, thisPlotColor)
 	plt.tight_layout() #adjust padding
 	plt.show() #makes window with plots
+
+#ADD PLOT LABELS
