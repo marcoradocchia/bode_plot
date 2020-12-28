@@ -12,6 +12,9 @@ installMatplotlibLinux = ['pip3', 'install', 'matplotlib==3.3.3']
 #RASPBERRY INSTALL PYTHON3-GI-CAIRO
 giCairoInstall = ['sudo', 'apt', 'install', 'python3-gi-cairo']
 
+#UBUNTU x86_64 canberra-gtk-module
+canberraInstall = ['sudo', 'apt', 'install', 'libcanberra-gtk-module', 'libcanberra-gtk3-module']
+
 #dump json
 def dumpJsonWin(WFexe):
 	configPath = os.getcwd() + '\\bin\\config.json'
@@ -51,8 +54,10 @@ def setup():
 		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]: ')).lower()
 		if WFinstalled == 'y':
 			print('OK')
-			if platform.machine() == 'armv7l':
+			if platform.machine() == 'armv7l': #raspberry requirements
 				subprocess.check_call(giCairoInstall)
+			if platform.machine() == 'x86_64': #ubuntu x86_64 requirements
+				subprocess.check_call(canberraInstall)
 			subprocess.check_call(pipInstall)
 			subprocess.check_call(tkInstall)
 			subprocess.check_call(installMatplotlibLinux)
