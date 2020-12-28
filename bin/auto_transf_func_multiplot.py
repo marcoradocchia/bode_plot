@@ -124,6 +124,12 @@ def getCutOff(freqPlot, transfPlot, case): #returns the cutoff frequency
 	else:
 		return None, None
 
+def getCutOffLabel(latexUse, cutOff, deltaCutOff):
+	if latexUse == True: #determines the use of latex and latex packages
+		return r'Cutoff: ${}\pm{}'.format(cutOff, deltaCutOff) + r'\si{\hertz}$'
+	else:
+		return r'Cutoff: {} ± {} Hz'.format(cutOff, deltaCutOff)
+
 def pickColor(colorPalette):
 	color = random.choice(colorPalette)
 	colorPalette.remove(color)

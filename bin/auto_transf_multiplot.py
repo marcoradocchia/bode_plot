@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import rc
 import math as m
-from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor, formatTicks
+from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor, formatTicks, getCutOffLabel
 
 #************************GLOBAL PARAMETERS************************
 emptyLine = '\n'
@@ -13,6 +13,7 @@ alphaErrorRange = 0.5
 ticksDivisions = 10
 line = '-'
 dashedLine = '--'
+latexFigWidth = 11.6
 
 #************************LINE COLORS************************
 ubuntuPurple = '#77216F'
@@ -79,26 +80,23 @@ def printTransfPlot(freqPlot, transfPlot, ax1, thisPlotColor): #plots out the tr
 	if cutOffVals is not None:
 		for index in range(len(cutOffVals)):
 			if cutOffVals[index] is not None: #if a cutoff freq is found, plots a vertical line at specific frequency
-				ax1.axvline(cutOffVals[index], color=ubuntuOrange, label=r'Cutoff Frequency')
+				ax1CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
+				ax1.axvline(cutOffVals[index], color=ubuntuOrange, label=ax1CutoffLabel)
 				ax1.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
-				ax1.text(cutOffVals[index] + deltaCutOffVals[index], 0.3, str(round(cutOffVals[index])), verticalalignment='center', rotation=-90, color=ubuntuOrange)
-	if latexUse == True: #determines the use of latex and latex packages
-		ax1Label = r'Trasfer Function'
-		ax1yLabel = r'Gain'
-	else:
-		ax1Label = r'Trasfer Function'
-		ax1yLabel = r'Gain'
+	ax1Label = r'Trasfer Function'
+	ax1yLabel = r'Gain'
 	ax1.plot(freqPlot, transfPlot, label=ax1Label, color=thisPlotColor)
 	ax1.set_ylabel(ax1yLabel)
+	ax1.legend(loc='best')
 
 def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out the transf function
 	cutOffVals, deltaCutOffVals = getCutOff(freqPlot, transfPlotdB, case='db')
 	if cutOffVals is not None:
 		for index in range(len(cutOffVals)):
 			if cutOffVals[index] is not None: #if a cutoff freq is found, plots a vertical line at specific frequency
-				ax2.axvline(cutOffVals[index], color=ubuntuOrange, label=r'Cutoff Frequency')
+				ax2CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
+				ax2.axvline(cutOffVals[index], color=ubuntuOrange, label=ax2CutoffLabel)
 				ax2.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
-				ax2.text(cutOffVals[index] + deltaCutOffVals[index], -25, str(round(cutOffVals[index])), verticalalignment='center', rotation=-90, color=ubuntuOrange)
 	if latexUse == True:
 		ax2Label = r'Trasfer Function $(\si{\decibel})$'
 		ax2yLabel = r'Gain $(\si{\decibel})$'
@@ -107,6 +105,7 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out th
 		ax2yLabel = r'Gain (dB)'
 	ax2.plot(freqPlot, transfPlotdB, label=ax2Label, color=thisPlotColor)
 	ax2.set_ylabel(ax2yLabel)
+	ax2.legend(loc='best')
 
 def printPhasePlot(freqPlot, phasePlot, ax3, thisPlotColor): #plots phase vs frequency
 	if latexUse == True:
@@ -136,12 +135,14 @@ if __name__ == "__main__":
 	#DECIDES THE USE OF TEX TO RENDER THE PLOT
 	if latexArg == 'y':
 		latexUse = True
-		rc('font',**{'family':'serif','serif':['Roman']})
-		plt.rcParams.update({
-			"text.usetex": True
-		})
+		rc('font',**{'family':'serif'})
 		preamble = r'\usepackage{siunitx} \usepackage{amsmath}'
 		params = {
+			'text.usetex': True,
+			'figure.figsize': (latexFigWidth, latexFigWidth/(4/3)),
+			'font.size' : 11,
+			'axes.labelsize': 11,
+			'legend.fontsize': 11,
 			'text.latex.preamble': preamble
 		}
 		plt.rcParams.update(params)
