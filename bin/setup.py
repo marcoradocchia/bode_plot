@@ -76,3 +76,5 @@ if __name__ == "__main__":
 	print('In order to make these scripts work you need a working Python, LaTeX and GhostScript installation.\nBefore you continue, please make sure you match these requirements.')
 	if str(input('Do you want to continue with the setup? [Y/n]: ')).lower() != 'y': quit()
 	setup()
+
+#CAREFUL! SETUP AUTOREMOVES SYSTEM UNCOMPATIBLE FILES (using linux removes .bat, using windows removes .sh)
