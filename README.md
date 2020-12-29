@@ -1,5 +1,5 @@
 # Scripted Transfert Function acquisition and plotting
-Scripts for automatic Transfer Function measure acquisition on __Digilent Studio__ and plotting
+Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and automatic plotting
 
 ## Requirements:
 * __Digilent WaveForms__
