@@ -61,7 +61,7 @@ if __name__ == "__main__":
 	plotCommand = [runPython, script, latexArg, csvFile]
 	if multipleFiles == True:
 		for file in csvFiles:
-			file = fixWindowsPath(file)
+			if systemType == 'Windows': file = fixWindowsPath(file)
 			plotCommand.append(file)
 		subprocess.check_call(plotCommand)
 		os.remove(csvFile)
