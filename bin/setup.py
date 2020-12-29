@@ -67,6 +67,9 @@ def setup():
 			dumpJsonLinux()
 		else:
 			input('Please install Diligent Adept Runtime and Diligent WaveForms first!\nPress Enter key to continue.\n')
+		os.remove(os.path.join(os.getcwd(), 'plot_win.bat'))
+		os.remove(os.path.join(os.getcwd(), 'setup_win.bat'))
+		os.remove(os.path.join(os.getcwd(), 'start_measure_win.bat'))
 
 if __name__ == "__main__":
 	systemType = platform.system()
