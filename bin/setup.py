@@ -49,6 +49,9 @@ def setup():
 				break
 			else:
 				print('Please select the correct file.')
+		os.remove(os.path.join(os.getcwd(), 'plot_linux.sh'))
+		os.remove(os.path.join(os.getcwd(), 'setup_linux.sh'))
+		os.remove(os.path.join(os.getcwd(), 'start_measure_linux.sh'))
 	elif systemType == 'Linux':
 		#asks if waveforms is installed and in case installs dependencies
 		WFinstalled = str(input('Is Diligent WaveForms currently installed in this pc? [Y/n]: ')).lower()
