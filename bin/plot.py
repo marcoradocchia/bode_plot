@@ -41,15 +41,16 @@ if __name__ == "__main__":
 	if csvFiles == '': quit()
 	csvFiles = list(csvFiles)
 	if len(csvFiles) == 1:
+		multipleFiles = False
 		csvFile = csvFiles[0]
 		fixFile(csvFile)
 	elif len(csvFiles) > 1:
+		multipleFiles = True
 		print('You selected the following file(s):')
 		for csvFile in csvFiles:
 			print(csvFile)
 		plotName = input('Insert your plot\'s name: ')
 		csvFile = mergeFiles(csvFiles, plotName)
-		print('New file has been creted: ' + csvFile)
 	latexArg = str(input('Print a plot using LaTeX labels? [Y/n]: ')).lower()
 	script = os.path.join(os.getcwd(), 'bin', 'auto_transf_multiplot.py')
 	if systemType == 'Windows':
@@ -58,6 +59,7 @@ if __name__ == "__main__":
 	elif systemType == 'Linux':
 		runPython = 'python3'
 	plotCommand = [runPython, script, latexArg, csvFile]
-	subprocess.Popen(plotCommand)
+	subprocess.check_call(plotCommand)
+	if multipleFiles == True: os.remove(csvFile)
 
 #TODO: check working on linux

@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import rc
 import math as m
-from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor, formatTicks, getCutOffLabel
+from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor, formatTicks, getCutOffLabel, printLegend
 
 #************************GLOBAL PARAMETERS************************
 emptyLine = '\n'
@@ -77,22 +77,27 @@ def setUpAx(ax1, ax2, ax3, circuitName, gain, gaindB, phase):
 #************************PRINT PLOTS************************
 def printTransfPlot(freqPlot, transfPlot, ax1, thisPlotColor): #plots out the transf function
 	cutOffVals, deltaCutOffVals = getCutOff(freqPlot, transfPlot, case='abs')
+	ax1LegendCheck = False
 	if cutOffVals is not None:
 		for index in range(len(cutOffVals)):
 			if cutOffVals[index] is not None: #if a cutoff freq is found, plots a vertical line at specific frequency
+				ax1LegendCheck = True
 				ax1CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
 				ax1.axvline(cutOffVals[index], color=ubuntuOrange, label=ax1CutoffLabel)
 				ax1.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
 	ax1yLabel = r'Gain'
 	ax1.plot(freqPlot, transfPlot, color=thisPlotColor)
 	ax1.set_ylabel(ax1yLabel)
-	ax1.legend(loc='best')
+	return ax1LegendCheck
+
 
 def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out the transf function
 	cutOffVals, deltaCutOffVals = getCutOff(freqPlot, transfPlotdB, case='db')
+	ax2LegendCheck = False
 	if cutOffVals is not None:
 		for index in range(len(cutOffVals)):
 			if cutOffVals[index] is not None: #if a cutoff freq is found, plots a vertical line at specific frequency
+				ax2LegendCheck = True
 				ax2CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
 				ax2.axvline(cutOffVals[index], color=ubuntuOrange, label=ax2CutoffLabel)
 				ax2.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
@@ -102,7 +107,7 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out th
 		ax2yLabel = r'Gain (dB)'
 	ax2.plot(freqPlot, transfPlotdB, color=thisPlotColor)
 	ax2.set_ylabel(ax2yLabel)
-	ax2.legend(loc='best')
+	return ax2LegendCheck
 
 def printPhasePlot(freqPlot, phasePlot, ax3, thisPlotColor): #plots phase vs frequency
 	if latexUse == True:
@@ -163,9 +168,10 @@ if __name__ == "__main__":
 	fig.canvas.set_window_title(circuitName) #changes window title to circuitName
 	for index in range(len(freq)): #print every curve
 		thisPlotColor, colorPalette = pickColor(colorPalette) #picks this plot color
-		printTransfPlot(freq[index], gain[index], ax1, thisPlotColor)
-		printTransfPlotdB(freq[index], gaindB[index], ax2, thisPlotColor)
+		ax1LegendCheck = printTransfPlot(freq[index], gain[index], ax1, thisPlotColor)
+		ax2LegendCheck = printTransfPlotdB(freq[index], gaindB[index], ax2, thisPlotColor)
 		printPhasePlot(freq[index], phase[index], ax3, thisPlotColor)
+	printLegend(ax1LegendCheck, ax2LegendCheck, ax1, ax2)
 	plt.tight_layout() #adjust padding
 	plt.show() #makes window with plots
 

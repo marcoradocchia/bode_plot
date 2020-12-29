@@ -130,6 +130,12 @@ def getCutOffLabel(latexUse, cutOff, deltaCutOff):
 	else:
 		return r'Cutoff: {} ± {} Hz'.format(cutOff, deltaCutOff)
 
+def printLegend(ax1LegendCheck, ax2LegendCheck, ax1, ax2):
+	if ax1LegendCheck == True:
+		ax1.legend(loc='best')
+	if ax2LegendCheck == True:
+		ax2.legend(loc='best')
+
 def pickColor(colorPalette):
 	color = random.choice(colorPalette)
 	colorPalette.remove(color)
