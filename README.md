@@ -24,6 +24,7 @@ Scripts for automatic transfer function acquisition on _Digilent Studio_
 
 
 ## Scripts Description:
+To use these scripts clone this repository into your file system as _'~/Documents/transfer\_function'_
 Use _win_ or _linux_ version of the scripts, wheter you are on a Windows or Linux system:
 * __setup_win__, __setup_linux__: creates a configuration file and donwloads/installs further required packages
 * __start_measure_win__, __start_measure_linux__: starts a transfer function in _WaveForms_, lets you save a _.csv_ file of the measure and asks you if you want to immediately plot it
