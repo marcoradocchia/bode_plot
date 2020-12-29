@@ -75,7 +75,7 @@ def setUpAx(ax1, ax2, ax3, circuitName, gain, gaindB, phase):
 	ax3.grid(True, alpha=alphaGridMinor, linestyle=dashedLine, which='minor')
 
 #************************PRINT PLOTS************************
-def printTransfPlot(freqPlot, transfPlot, ax1, thisPlotColor): #plots out the transf function
+def printTransfPlot(freqPlot, transfPlot, ax1, ax1Label, thisPlotColor): #plots out the transf function
 	cutOffVals, deltaCutOffVals = getCutOff(freqPlot, transfPlot, case='abs')
 	ax1LegendCheck = False
 	if cutOffVals is not None:
@@ -86,12 +86,15 @@ def printTransfPlot(freqPlot, transfPlot, ax1, thisPlotColor): #plots out the tr
 				ax1.axvline(cutOffVals[index], color=ubuntuOrange, label=ax1CutoffLabel)
 				ax1.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
 	ax1yLabel = r'Gain'
-	ax1.plot(freqPlot, transfPlot, color=thisPlotColor)
 	ax1.set_ylabel(ax1yLabel)
+	if ax1Label is not None:
+		ax1.plot(freqPlot, transfPlot, color=thisPlotColor, label=ax1Label)
+	else:
+		ax1.plot(freqPlot, transfPlot, color=thisPlotColor)
 	return ax1LegendCheck
 
 
-def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out the transf function
+def printTransfPlotdB(freqPlot, transfPlotdB, ax2, ax2Label, thisPlotColor): #plots out the transf function
 	cutOffVals, deltaCutOffVals = getCutOff(freqPlot, transfPlotdB, case='db')
 	ax2LegendCheck = False
 	if cutOffVals is not None:
@@ -105,22 +108,28 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, thisPlotColor): #plots out th
 		ax2yLabel = r'Gain $(\si{\decibel})$'
 	else:
 		ax2yLabel = r'Gain (dB)'
-	ax2.plot(freqPlot, transfPlotdB, color=thisPlotColor)
 	ax2.set_ylabel(ax2yLabel)
+	if ax2Label is not None:
+		ax2.plot(freqPlot, transfPlotdB, color=thisPlotColor, label=ax2Label)
+	else:
+		ax2.plot(freqPlot, transfPlotdB, color=thisPlotColor)
 	return ax2LegendCheck
 
-def printPhasePlot(freqPlot, phasePlot, ax3, thisPlotColor): #plots phase vs frequency
+def printPhasePlot(freqPlot, phasePlot, ax3, ax3Label, thisPlotColor): #plots phase vs frequency
 	if latexUse == True:
-		ax3Label = r'Phase $\phi$'
 		ax3xLabel = r'$\nu \, (\si{\hertz})$'
 		ax3yLabel = r'$\phi \, (\si{\degree})$'
 	else:
-		ax3Label = r'Phase'
 		ax3xLabel = r'Frequency (Hz)'
 		ax3yLabel = r'Phase'
-	ax3.plot(freqPlot, phasePlot, label=ax3Label, color=thisPlotColor)
 	ax3.set_xlabel(ax3xLabel)
 	ax3.set_ylabel(ax3yLabel)
+	if ax3Label is not None:
+		ax3.plot(freqPlot, phasePlot, color=thisPlotColor, label=ax3Label)
+		return True
+	else:
+		ax3.plot(freqPlot, phasePlot, color=thisPlotColor)
+		return False
 
 #************************MAIN************************
 if __name__ == "__main__":
@@ -130,6 +139,14 @@ if __name__ == "__main__":
 	try:
 		latexArg = args[0]
 		inputFilePath = args[1]
+		plotNames = []
+		if len(args) > 2:
+			mergePlotNames = args[2:]
+			for name in mergePlotNames:
+				plotNames.append(getCircuitName(name))
+			ax1LegendCheck = True
+			ax2LegendCheck = True
+		lenPlotNames = len(plotNames)
 	except:
 		print('Please give valid arguments.')
 		quit()
@@ -148,10 +165,10 @@ if __name__ == "__main__":
 			'text.latex.preamble': preamble
 		}
 		plt.rcParams.update(params)
-		print('Using LateX labels!')
+		print('Using LaTeX labels!')
 	else:
 		latexUse = False
-		print('Not using LateX labels!')
+		print('Not using LaTeX labels!')
 
 	#GETTING THE PLOT DATA INTO ARRAYS
 	freq, inVolt, outVolt, gain, gaindB, phase, circuitName = importData(inputFilePath)
@@ -167,12 +184,17 @@ if __name__ == "__main__":
 	setUpAx(ax1, ax2, ax3, circuitName, gain, gaindB, phase) #set up axes parameters
 	fig.canvas.set_window_title(circuitName) #changes window title to circuitName
 	for index in range(len(freq)): #print every curve
+		if lenPlotNames != 0:
+			plotLabels = plotNames[index]
+		else:
+			plotLabels = None
 		thisPlotColor, colorPalette = pickColor(colorPalette) #picks this plot color
-		ax1LegendCheck = printTransfPlot(freq[index], gain[index], ax1, thisPlotColor)
-		ax2LegendCheck = printTransfPlotdB(freq[index], gaindB[index], ax2, thisPlotColor)
-		printPhasePlot(freq[index], phase[index], ax3, thisPlotColor)
-	printLegend(ax1LegendCheck, ax2LegendCheck, ax1, ax2)
+		ax1LegendCheck = printTransfPlot(freq[index], gain[index], ax1, plotLabels, thisPlotColor)
+		ax2LegendCheck = printTransfPlotdB(freq[index], gaindB[index], ax2, plotLabels, thisPlotColor)
+		ax3LegendCheck = printPhasePlot(freq[index], phase[index], ax3, plotLabels, thisPlotColor)
+	if lenPlotNames != 0:
+		ax1LegendCheck = True
+		ax2LegendCheck = True
+	printLegend(ax1LegendCheck, ax2LegendCheck, ax3LegendCheck, ax1, ax2, ax3)
 	plt.tight_layout() #adjust padding
 	plt.show() #makes window with plots
-
-#ADD PLOT LABELS

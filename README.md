@@ -10,7 +10,7 @@ Scripts for automatic transfer function acquisition on _Digilent Studio_
 
 
 ## Important:
-* In order to make the scripts work you need to donwload the files as _.zip_ and extract into the _Documents_ folder of your system (please do not rename the extraction folder, please keep the default name '_comp\_lem-main_')
+* In order to make the scripts work you need to clone this repository into the _Documents_ directory of your file system (please __DO NOT__ rename the cloned directory, keep the default name '_transf\_function_')
 * These scripts support Windows and Debian based Linux distributions
 * Careful! The scripts are not working on _Python 2_
 * Please don't apply any changes to the _*.dwf3work_ files!

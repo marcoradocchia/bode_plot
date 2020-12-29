@@ -76,9 +76,9 @@ def getCircuitName(inputFilePath):
 	if len(fileName) > 1:
 		for element in fileName:
 			name += element + ' '
-		name = name.upper()
+		name = name.title()
 	else:
-		name = fileName[0].upper()
+		name = fileName[0].title()
 	return name
 
 def printCuoffResults(cutOffVals, deltaCutOffVals, case): #prints cutoff measure and bandwidth in terminal (where present)
@@ -130,11 +130,10 @@ def getCutOffLabel(latexUse, cutOff, deltaCutOff):
 	else:
 		return r'Cutoff: {} ± {} Hz'.format(cutOff, deltaCutOff)
 
-def printLegend(ax1LegendCheck, ax2LegendCheck, ax1, ax2):
-	if ax1LegendCheck == True:
-		ax1.legend(loc='best')
-	if ax2LegendCheck == True:
-		ax2.legend(loc='best')
+def printLegend(ax1LegendCheck, ax2LegendCheck, ax3LegendCheck, ax1, ax2, ax3):
+	if ax1LegendCheck == True: ax1.legend(loc='best')
+	if ax2LegendCheck == True: ax2.legend(loc='best')
+	if ax3LegendCheck == True: ax3.legend(loc='best')
 
 def pickColor(colorPalette):
 	color = random.choice(colorPalette)
