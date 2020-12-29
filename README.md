@@ -14,8 +14,7 @@ Scripts for automatic transfer function acquisition on _Digilent Studio_
 * These scripts support Windows and Debian based Linux distributions
 * Careful! The scripts are not working on _Python 2_
 * Please don't apply any changes to the _*.dwf3work_ files!
-* On _Linux_ run the _.sh_ files with:
-	bash ./*.sh
+* On _Linux_ run the _.sh_ files with: ```bash ./*.sh```
 
 
 ## Download Links:
