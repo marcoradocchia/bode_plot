@@ -90,7 +90,7 @@ def printTransfPlot(freqPlot, transfPlot, ax1, ax1Label, thisPlotColor): #plots 
 	return ax1LegendCheck
 
 
-def printTransfPlotdB(freqPlot, transfPlotdB, ax2, ax2Label, thisPlotColor): #plots out the transf function
+def printTransfPlotdB(freqPlot, transfPlotdB, ax2, ax3, ax2Label, thisPlotColor): #plots out the transf function
 	cutOffVals, deltaCutOffVals = getCutOff(freqPlot, transfPlotdB, case='db')
 	ax2LegendCheck = False
 	if cutOffVals is not None:
@@ -100,6 +100,8 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, ax2Label, thisPlotColor): #pl
 				ax2CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
 				ax2.axvline(cutOffVals[index], color=vertLineColor, label=ax2CutoffLabel)
 				ax2.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
+				ax3.axvline(cutOffVals[index], color=vertLineColor, label=ax2CutoffLabel)
+				ax3.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
 	if latexUse == True:
 		ax2yLabel = r'Gain $(\si{\decibel})$'
 	else:
@@ -186,7 +188,7 @@ if __name__ == "__main__":
 			plotLabels = None
 		thisPlotColor, colorPalette = pickColor(colorPalette) #picks this plot color
 		ax1LegendCheck = printTransfPlot(freq[index], gain[index], ax1, plotLabels, thisPlotColor)
-		ax2LegendCheck = printTransfPlotdB(freq[index], gaindB[index], ax2, plotLabels, thisPlotColor)
+		ax2LegendCheck = printTransfPlotdB(freq[index], gaindB[index], ax2, ax3, plotLabels, thisPlotColor)
 		ax3LegendCheck = printPhasePlot(freq[index], phase[index], ax3, plotLabels, thisPlotColor)
 	if lenPlotNames != 0:
 		ax1LegendCheck = True
