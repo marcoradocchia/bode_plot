@@ -39,7 +39,9 @@ def setup():
 		if str(input('Make sure your Python and GhostScript installations are added to PATH. Confirm? [Y/n]: ')).lower() != 'y': quit()
 		#installes dependencies
 		subprocess.check_call(installMatplotlibWin)
-		Tk().withdraw()
+		root = Tk()
+		root.lift()
+		root.withdraw()
 		print('Please select WaveForms.exe installation file from your file system.')
 		while True:
 			WFexe = askopenfilename(title='Select WaveForms EXE file', filetypes=[('EXE', '.exe')])
