@@ -99,7 +99,7 @@ def printCuoffResults(cutOffVals, deltaCutOffVals, case): #prints cutoff measure
 
 def getCutOff(freqPlot, transfPlot, case): #returns the cutoff frequency
 	if case == 'abs':
-		cutVal = 1 / sqrt(2)
+		cutVal = 1 / sqrt(2) #IN TEORIA QUI ANDREBBE IL MASSIMO DELLA FUNZIONE /sqrt(2)
 	elif case == 'db':
 		cutVal = -3
 
