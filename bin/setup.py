@@ -40,7 +40,7 @@ def setup():
 		#installes dependencies
 		subprocess.check_call(installMatplotlibWin)
 		root = Tk()
-		root.lift()
+		root.attributes("-topmost", True)
 		root.withdraw()
 		print('Please select WaveForms.exe installation file from your file system.')
 		while True:

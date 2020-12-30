@@ -16,17 +16,13 @@ dashedLine = '--'
 latexFigWidth = 11.6
 
 #************************LINE COLORS************************
-ubuntuPurple = '#77216F'
-ubuntuOrange = '#E95420'
 ubuntuWarmGrey = '#AEA79F'
+vertLineColor = '#77AADD'
 colorPalette = [
-	'#088C6F',
-	'#2E282A',
-	'#4F323B',
-	'#3A9679',
-	'#263859',
-	'#FF6768',
-	ubuntuPurple
+	'#EE8866',
+	'#B34255',
+	'#59B342',
+	'#787878'
 ]
 
 #************************SETUP PLOTS************************
@@ -83,7 +79,7 @@ def printTransfPlot(freqPlot, transfPlot, ax1, ax1Label, thisPlotColor): #plots 
 			if cutOffVals[index] is not None: #if a cutoff freq is found, plots a vertical line at specific frequency
 				ax1LegendCheck = True
 				ax1CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
-				ax1.axvline(cutOffVals[index], color=ubuntuOrange, label=ax1CutoffLabel)
+				ax1.axvline(cutOffVals[index], color=vertLineColor, label=ax1CutoffLabel)
 				ax1.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
 	ax1yLabel = r'Gain'
 	ax1.set_ylabel(ax1yLabel)
@@ -102,7 +98,7 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, ax2Label, thisPlotColor): #pl
 			if cutOffVals[index] is not None: #if a cutoff freq is found, plots a vertical line at specific frequency
 				ax2LegendCheck = True
 				ax2CutoffLabel = getCutOffLabel(latexUse, cutOffVals[index], deltaCutOffVals[index])
-				ax2.axvline(cutOffVals[index], color=ubuntuOrange, label=ax2CutoffLabel)
+				ax2.axvline(cutOffVals[index], color=vertLineColor, label=ax2CutoffLabel)
 				ax2.axvspan(cutOffVals[index] - deltaCutOffVals[index], cutOffVals[index] + deltaCutOffVals[index], alpha=alphaErrorRange, color=ubuntuWarmGrey)
 	if latexUse == True:
 		ax2yLabel = r'Gain $(\si{\decibel})$'

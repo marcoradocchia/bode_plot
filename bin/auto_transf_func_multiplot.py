@@ -136,6 +136,10 @@ def printLegend(ax1LegendCheck, ax2LegendCheck, ax3LegendCheck, ax1, ax2, ax3):
 	if ax3LegendCheck == True: ax3.legend(loc='best')
 
 def pickColor(colorPalette):
-	color = random.choice(colorPalette)
-	colorPalette.remove(color)
-	return color, colorPalette
+	try:
+		color = colorPalette[0]
+		colorPalette.pop(0)
+		return color, colorPalette
+	except:
+		print('Too many plots.')
+		quit()
