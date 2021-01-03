@@ -25,7 +25,7 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 
 
 ## Scripts Description:
-To use these scripts clone this repository into your file system as _'~/Documents/transfer\_function'_
+To use these scripts clone this repository into your file system as ```~/Documents/transfer_function```.
 
 Use _win_ or _linux_ version of the scripts, wheter you are on a Windows or Linux system:
 * ```setup_win.bat```, ```setup_linux.sh```: creates a configuration file and donwloads/installs further required packages
