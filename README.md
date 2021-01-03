@@ -14,7 +14,6 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 * These scripts support Windows and Debian based Linux distributions (tested on Windows, Ubuntu 20.10, RaspberryOS)
 * Careful! The scripts are __NOT__ working on Python2
 * Please don't apply any changes to the ```*.dwf3work``` files!
-* On _Linux_ run scripts using: ```bash ./*.sh```
 
 
 ## Download Links:
@@ -24,12 +23,12 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 * [GhostScript (Windows)](https://ghostscript.com/download/gsdnld.html)
 
 
-## Scripts Description:
+## Scripts:
 To use these scripts clone this repository into your file system as ```~/Documents/transfer_function/```.
 
 Using Git: ```git clone https://gihub.com/marcoradocchia/transfer_function```
 
-Use _PowerShell_ or _Bash_, wheter you are on a Windows or Linux system:
+To run the scripts, open a terminal in the directory, using  _PowerShell_ (using ```.\*.bat```) or _Bash_ (using ```bash ./*.sh```), wheter you are on a Windows or Linux system:
 
 Script | Description
 ------ | -----------
