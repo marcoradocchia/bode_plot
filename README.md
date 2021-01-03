@@ -33,7 +33,7 @@ Use _win_ or _linux_ version of the scripts, wheter you are on a Windows or Linu
 
 OS | Shell | Script | Description
 -- | ----- | ------ | -----------|
-   |       | ```setup_win.bat``` | creates a configuration file and donwloads/installs further required packages
+   | PowerShell | ```setup_win.bat``` | creates a configuration file and donwloads/installs further required packages
 
 
 <!-- * , ```setup_linux.sh```: 
