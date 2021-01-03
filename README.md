@@ -14,7 +14,7 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 * These scripts support Windows and Debian based Linux distributions (tested on Windows, Ubuntu 20.10, RaspberryOS)
 * Careful! The scripts are __NOT__ working on _Python 2_
 * Please don't apply any changes to the _*.dwf3work_ files!
-* On _Linux_ run the _*.sh_ files with: ```bash ./*.sh```
+* On _Linux_ run scripts using: ```bash ./*.sh```
 
 
 ## Download Links:
@@ -28,6 +28,6 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 To use these scripts clone this repository into your file system as _'~/Documents/transfer\_function'_
 
 Use _win_ or _linux_ version of the scripts, wheter you are on a Windows or Linux system:
-* __setup_win__, __setup_linux__: creates a configuration file and donwloads/installs further required packages
-* __start_measure_win__, __start_measure_linux__: starts a transfer function in _WaveForms_, lets you save a _*.csv_ file of the measure and asks you if you want to immediately plot it
-* __plot_win__, __plot_linux__: plots data in a given _*.csv_ file(s) (columns in the input file need to be [frequency, input voltage, output voltage, gain, gain (dB), phase]); if more than a file is given, merges all the plots into a single one, labelling each curve with the _*.csv_ file name
+* ```setup_win.bat```, ```setup_linux.sh```: creates a configuration file and donwloads/installs further required packages
+* ```start_measure_win.bat```, ```start_measure_linux.sh```: starts a transfer function measurement in _WaveForms_, saves a _*.csv_ file containing the data and asks you if you want to immediately plot it
+* ```plot_win.bat```, ```plot_linux.sh```: plots data in a given _*.csv_ file(s) (columns in the input file need to be [frequency, input voltage, output voltage, gain, gain (dB), phase]); if more than a file is given, merges all the plots into a single one, labelling each curve with the _*.csv_ file name
