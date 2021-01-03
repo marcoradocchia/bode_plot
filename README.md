@@ -13,7 +13,7 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 * In order to make the scripts work you need to clone this repository into the _Documents_ directory of your file system (please __DO NOT__ rename the cloned directory, keep the default name '_transf\_function_')
 * These scripts support Windows and Debian based Linux distributions (tested on Windows, Ubuntu 20.10, RaspberryOS)
 * Careful! The scripts are __NOT__ working on Python2
-* Please don't apply any changes to the _*.dwf3work_ files!
+* Please don't apply any changes to the ```*.dwf3work``` files!
 * On _Linux_ run scripts using: ```bash ./*.sh```
 
 
