@@ -29,7 +29,7 @@ To use these scripts clone this repository into your file system as ```~/Documen
 
 Using Git: ```git clone https://gihub.com/marcoradocchia/transfer_function```
 
-Use _win_ or _linux_ version of the scripts, wheter you are on a Windows or Linux system:
+Use _PowerShell_ or _Bash_, wheter you are on a Windows or Linux system:
 
 Script | Description
 ------ | -----------
