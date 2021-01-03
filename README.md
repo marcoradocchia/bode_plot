@@ -32,12 +32,12 @@ Using Git: ```git clone https://gihub.com/marcoradocchia/transfer_function```
 Use _win_ or _linux_ version of the scripts, wheter you are on a Windows or Linux system:
 
 OS | Shell | Run Script | Description
-** | ----- | ------ | -----------|
+-- | ----- | ------ | -----------|
 Windows | PowerShell | ```.\setup_win.bat``` | creates a configuration file and donwloads/installs further required packages
-Windows | PowerShell | ```.\start_measure_win.bat``` | starts a transfer function measurement in _WaveForms_, saves a ```*.csv``` file containing the data and asks you if you want to immediately plot it
-Windows | PowerShell | ```.\plot_win.bat``` | plots data in a given ```*.csv``` file(s) (columns in the input file need to be [frequency, input voltage, output voltage, gain, gain (dB), phase]); if more than a file is given, merges all the plots into a single one, labelling each curve with the ```*.csv``` file name plot it
+        |            | ```.\start_measure_win.bat``` | starts a transfer function measurement in _WaveForms_, saves a ```*.csv``` file containing the data and asks you if you want to immediately plot it
+        |            | ```.\plot_win.bat``` | plots data in a given ```*.csv``` file(s) (columns in the input file need to be [frequency, input voltage, output voltage, gain, gain (dB), phase]); if more than a file is given, merges all the plots into a single one, labelling each curve with the ```*.csv``` file name plot it
 
 
-Linux | Bash | ```bash ./setup_linux.sh``` | creates a configuration file and donwloads/installs further required packages
+<!-- Linux | Bash | ```bash ./setup_linux.sh``` | creates a configuration file and donwloads/installs further required packages
 Linux | Bash | ```bash ./start_measure_linux.sh``` | starts a transfer function measurement in _WaveForms_, saves a ```*.csv``` file containing the data and asks you if you want to immediately plot it
-Linux | Bash | ```bash ./plot_linux.sh``` | plots data in a given ```*.csv``` file(s) (columns in the input file need to be [frequency, input voltage, output voltage, gain, gain (dB), phase]); if more than a file is given, merges all the plots into a single one, labelling each curve with the ```*.csv``` file name plot it
+Linux | Bash | ```bash ./plot_linux.sh``` | plots data in a given ```*.csv``` file(s) (columns in the input file need to be [frequency, input voltage, output voltage, gain, gain (dB), phase]); if more than a file is given, merges all the plots into a single one, labelling each curve with the ```*.csv``` file name plot it -->
