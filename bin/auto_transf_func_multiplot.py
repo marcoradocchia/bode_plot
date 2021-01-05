@@ -95,24 +95,20 @@ def printCuoffResults(cutOffVals, deltaCutOffVals, case): #prints cutoff measure
 				cutOffVals[index] = round(cutOffVals[index], 1)
 				deltaCutOffVals[index] = round(deltaCutOffVals[index], 1)
 			print(str(cutOffVals[index]) + ' +/- ' + str(deltaCutOffVals[index]) + ' Hz')
-		#TODO: AGGIUNGERE LA MISURA DELLA BANDWIDTH
 
-def getCutOff(freqPlot, transfPlot, case): #returns the cutoff frequency
-	if case == 'abs':
-		cutVal = 1 / sqrt(2) #IN TEORIA QUI ANDREBBE IL MASSIMO DELLA FUNZIONE /sqrt(2)
-	elif case == 'db':
-		cutVal = -3
-
+def getCutOff(freqPlot, transfPlot, case): #returns the cutoff frequency(s) and delta(s)
+	if case == 'abs': cutVal = 1 / sqrt(2)
+	elif case == 'db': cutVal = -3.
 	cutOffVals = []
 	deltaCutOffVals = []
 	for index in range(len(freqPlot) - 1):
-		if transfPlot[index] >= cutVal and transfPlot[index+1] <= cutVal:
+		if transfPlot[index] >= cutVal and transfPlot[index + 1] <= cutVal:
 			cutOffVal = (freqPlot[index + 1] + freqPlot[index]) / 2
 			deltaCutOffVal = freqPlot[index + 1] - cutOffVal
 			#appending to arrays
 			cutOffVals.append(cutOffVal)
 			deltaCutOffVals.append(deltaCutOffVal)
-		if transfPlot[index] <= cutVal and transfPlot[index+1] >= cutVal:
+		if transfPlot[index] <= cutVal and transfPlot[index + 1] >= cutVal:
 			cutOffVal = (freqPlot[index + 1] + freqPlot[index]) / 2
 			deltaCutOffVal = freqPlot[index + 1] - cutOffVal
 			#appending to arrays
