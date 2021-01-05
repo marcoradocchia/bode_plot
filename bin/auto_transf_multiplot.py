@@ -116,10 +116,10 @@ def printTransfPlotdB(freqPlot, transfPlotdB, ax2, ax3, ax2Label, thisPlotColor)
 def printPhasePlot(freqPlot, phasePlot, ax3, ax3Label, thisPlotColor): #plots phase vs frequency
 	if latexUse == True:
 		ax3xLabel = r'$\nu \, (\si{\hertz})$'
-		ax3yLabel = r'$\Delta \phi \, (\si{\degree})$'
+		ax3yLabel = r'$\lvert\Delta \phi \, (\si{\degree})\rvert$'
 	else:
 		ax3xLabel = r'Frequency (Hz)'
-		ax3yLabel = r'Phase Shift'
+		ax3yLabel = r'|Phase Shift|'
 	ax3.set_xlabel(ax3xLabel)
 	ax3.set_ylabel(ax3yLabel)
 	if ax3Label is not None:
