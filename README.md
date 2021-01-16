@@ -12,7 +12,7 @@ Scripts for automatic Bode Plot acquisition and plotting on __Digilent Studio__.
 ## Important:
 * In order to make the scripts work you need to clone this repository into the ```Documents``` directory of your file system (please __DO NOT__ rename the cloned directory, keep the default name ```bode_plot```)
 * These scripts support Windows and Debian based Linux distributions (tested on Windows, Ubuntu 20.10, RaspberryOS)
-* Careful! The scripts are __NOT__ working on Python2
+* Careful! The scripts require Python3, they are __NOT__ working on Python2
 * Please don't apply any changes to the ```*.dwf3work``` files!
 
 
