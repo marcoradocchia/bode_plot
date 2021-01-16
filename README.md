@@ -33,5 +33,5 @@ To run the scripts, open a terminal in the directory, using _PowerShell_ (using 
 Script | Description
 ------ | -----------
 ```setup_win.bat```, ```setup_linux.sh```| creates a configuration file and donwloads/installs further required packages
-```start_measure_win.bat```, ```start_measure_linux.sh``` | starts a transfer function measurement in _WaveForms_, saves a ```*.csv``` file containing the data and asks you if you want to immediately plot it
+```start_measure_win.bat```, ```start_measure_linux.sh``` | starts a transfer function measurement in _WaveForms_, saves a ```*.csv``` file containing the data and asks you if you want to immediately plot it; before you run this script, make sure that WaveForms software is ready and set on your hardware device
 ```plot_win.bat```, ```plot_linux.sh``` | plots data in a given ```*.csv``` file(s) (columns in the input file need to be [frequency, input voltage, output voltage, gain, gain (dB), phase]); if more than a file is given, merges all the plots into a single one, labelling each curve with the ```*.csv``` file name
