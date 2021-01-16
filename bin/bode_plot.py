@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import rc
 import math as m
-from auto_transf_func_multiplot import importData, getCircuitName, getCutOff, splitAt, pickColor, formatTicks, getCutOffLabel, printLegend
+from bode_plot_module import importData, getCircuitName, getCutOff, splitAt, pickColor, formatTicks, getCutOffLabel, printLegend
 
 #************************GLOBAL PARAMETERS************************
 emptyLine = '\n'

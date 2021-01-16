@@ -1,5 +1,5 @@
-# Scripted Transfert Function acquisition and plotting
-Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and automatic plotting
+# Scripted Bode Plot acquisition and plotting
+Scripts for automatic Bode Plot acquisition and plotting on __Digilent Studio__.
 
 ## Requirements:
 * __Digilent WaveForms__
@@ -10,13 +10,13 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 
 
 ## Important:
-* In order to make the scripts work you need to clone this repository into the _Documents_ directory of your file system (please __DO NOT__ rename the cloned directory, keep the default name '_transf\_function_')
+* In order to make the scripts work you need to clone this repository into the ```Documents``` directory of your file system (please __DO NOT__ rename the cloned directory, keep the default name ```bode_plot```)
 * These scripts support Windows and Debian based Linux distributions (tested on Windows, Ubuntu 20.10, RaspberryOS)
 * Careful! The scripts are __NOT__ working on Python2
 * Please don't apply any changes to the ```*.dwf3work``` files!
 
 
-## Download Links:
+## Downloads:
 * [Digilent WaveForms](https://mautic.digilentinc.com/waveforms-download)
 * [Digilent Adept for Linux Runtime](https://mautic.digilentinc.com/adept-runtime-download)
 * [TeX Live (Windows)](https://tug.org/texlive/acquire-netinstall.html)
@@ -24,11 +24,11 @@ Scripts for automatic Transfer Function acquisition on __Digilent Studio__ and a
 
 
 ## Scripts:
-To use these scripts clone this repository into your file system as ```~/Documents/transfer_function/```.
+In order to use these scripts, clone this repository into your file system as ```~/Documents/bode_plot/```.
 
-Using Git: ```git clone https://gihub.com/marcoradocchia/transfer_function```
+Using Git: ```git clone https://gihub.com/marcoradocchia/bode_plot```
 
-To run the scripts, open a terminal in the directory, using  _PowerShell_ (using ```.\*.bat```) or _Bash_ (using ```bash ./*.sh```), wheter you are on a Windows or Linux system:
+To run the scripts, open a terminal in the directory, using _PowerShell_ (using ```.\*.bat```) or _Bash_ (using ```bash ./*.sh```), wheter you are on a Windows or Linux system:
 
 Script | Description
 ------ | -----------

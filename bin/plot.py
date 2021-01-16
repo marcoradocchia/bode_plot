@@ -52,7 +52,7 @@ if __name__ == "__main__":
 		plotName = input('Insert your plot\'s name: ')
 		csvFile = mergeFiles(csvFiles, plotName)
 	latexArg = str(input('Print a plot using LaTeX labels? [Y/n]: ')).lower()
-	script = os.path.join(os.getcwd(), 'bin', 'auto_transf_multiplot.py')
+	script = os.path.join(os.getcwd(), 'bin', 'bode_plot.py')
 	if systemType == 'Windows':
 		runPython = 'python'
 		csvFile = fixWindowsPath(csvFile)
