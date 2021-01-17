@@ -150,9 +150,9 @@ if __name__ == "__main__":
 		quit()
 
 	#DECIDES THE USE OF TEX TO RENDER THE PLOT
+	rc('font',**{'family':'serif'})
 	if latexArg == 'y':
 		latexUse = True
-		rc('font',**{'family':'serif'})
 		preamble = r'\usepackage{siunitx} \usepackage{amsmath}'
 		params = {
 			'text.usetex': True,
