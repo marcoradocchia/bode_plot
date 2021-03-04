@@ -28,7 +28,7 @@ def dumpJsonLinux():
 	with open(configPath, 'w') as configFile:
 		json.dump(jsonScheme, configFile)
 
-#detect WF istallation path
+#detect WF installation path
 def setup():
 	if systemType == 'Windows':
 		#import tkinter only
